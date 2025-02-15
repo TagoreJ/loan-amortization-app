@@ -53,9 +53,9 @@ def download_pdf():
         </style>
     </head>
     <body>
-        <h2 style="color: blue; text-align: center;">📄 Loan Amortization Table</h2>
+        <h2 style="color: blue; text-align: center;"> 📄 Loan Amortization Table</h2>
         {html_table}
-        <h4 style="text-align: right; color: red;">🚀 Made by Tagore J</h4>
+        <h4 style="text-align: right; color: red;"> 🚀 Made by Tagore J</h4>
     </body>
     </html>
     '''
