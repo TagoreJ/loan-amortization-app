@@ -128,7 +128,7 @@
         {% endfor %}
     </table>
 
-    <form method="post" action="/download_pdf">
+    <form action="/download-pdf" method="POST">
         <input type="hidden" name="principal" value="{{ request.form['principal'] }}">
         <input type="hidden" name="rate" value="{{ request.form['rate'] }}">
         <input type="hidden" name="years" value="{{ request.form['years'] }}">
