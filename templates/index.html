@@ -3,92 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loan Amortization Calculator</title>
+    <title>💰 Loan Amortization Calculator</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f8ff;
+            background-color: #f4f4f9;
             text-align: center;
-        }
-        form {
-            background: #ffffff;
             padding: 20px;
-            border-radius: 10px;
+        }
+
+        h2 {
+            color: #333;
+            font-size: 28px;
+        }
+
+        form {
+            background: white;
+            padding: 20px;
+            max-width: 400px;
+            margin: 20px auto;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            display: inline-block;
-            margin-top: 20px;
+            border-radius: 10px;
         }
-        input, button {
-            margin: 10px;
-            padding: 10px;
-            width: 90%;
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin: 10px 0 5px;
+            color: #555;
         }
-        table {
-            width: 80%;
-            margin: auto;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            border: 1px solid black;
+
+        input {
+            width: 100%;
             padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 80%;
+            background: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
             text-align: center;
         }
+
         th {
-            background-color: #4CAF50;
+            background-color: #28a745;
             color: white;
         }
+
         tr:nth-child(even) {
-            background-color: #d1e7dd;
+            background-color: #f2f2f2;
         }
-        tr:nth-child(odd) {
-            background-color: #f8d7da;
-        }
-        .footer {
+
+        .download-btn {
+            background-color: #007bff;
             margin-top: 20px;
-            font-size: 14px;
-            color: gray;
+        }
+
+        .download-btn:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-    <h1>Loan Amortization Calculator</h1>
-    <form method="POST">
-        <label for="principal">Principal Amount:</label>
-        <input type="number" name="principal" required><br>
-        <label for="rate">Annual Interest Rate (%):</label>
-        <input type="number" name="rate" step="0.01" required><br>
-        <label for="years">Loan Term (Years):</label>
-        <input type="number" name="years" required><br>
-        <button type="submit">Calculate</button>
+    <h2>💰 Loan Amortization Calculator 📊</h2>
+    <p>Calculate your loan repayment schedule easily! 🏦</p>
+
+    <form method="post" action="/">
+        <label for="principal">🏦 Loan Amount:</label>
+        <input type="number" id="principal" name="principal" required>
+
+        <label for="rate">📈 Annual Interest Rate (%):</label>
+        <input type="number" id="rate" name="rate" step="0.01" required>
+
+        <label for="years">📅 Loan Term (Years):</label>
+        <input type="number" id="years" name="years" required>
+
+        <button type="submit">💡 Calculate</button>
     </form>
-    
+
     {% if table %}
-        <h2>Amortization Schedule</h2>
-        <table>
-            <tr>
-                <th>Month</th>
-                <th>EMI</th>
-                <th>Principal Paid</th>
-                <th>Interest Paid</th>
-                <th>Remaining Balance</th>
-            </tr>
-            {% for row in table %}
-                <tr>
-                    <td>{{ row[0] }}</td>
-                    <td>{{ row[1] }}</td>
-                    <td>{{ row[2] }}</td>
-                    <td>{{ row[3] }}</td>
-                    <td>{{ row[4] }}</td>
-                </tr>
-            {% endfor %}
-        </table>
-        <form action="/download-pdf" method="POST">
-            <input type="hidden" name="principal" value="{{ request.form['principal'] }}">
-            <input type="hidden" name="rate" value="{{ request.form['rate'] }}">
-            <input type="hidden" name="years" value="{{ request.form['years'] }}">
-            <button type="submit">Download PDF</button>
-        </form>
+    <h3>📑 Amortization Schedule</h3>
+    <table>
+        <tr>
+            <th>📅 Month</th>
+            <th>💰 Payment</th>
+            <th>🏦 Principal</th>
+            <th>📊 Interest</th>
+            <th>🔻 Balance</th>
+        </tr>
+        {% for row in table %}
+        <tr>
+            <td>{{ row[0] }}</td>
+            <td>₹{{ row[1] }}</td>
+            <td>₹{{ row[2] }}</td>
+            <td>₹{{ row[3] }}</td>
+            <td>₹{{ row[4] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <form method="post" action="/download_pdf">
+        <input type="hidden" name="principal" value="{{ request.form['principal'] }}">
+        <input type="hidden" name="rate" value="{{ request.form['rate'] }}">
+        <input type="hidden" name="years" value="{{ request.form['years'] }}">
+        <button type="submit" class="download-btn">📥 Download as PDF</button>
+    </form>
     {% endif %}
     <div class="footer">Designed by Tagore J 🚀</div>
 </body>
