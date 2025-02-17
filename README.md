@@ -7,15 +7,11 @@ This Loan Amortization Calculator is a web application built using **Flask** tha
 - 🏦 **EMI Calculation**: Calculates EMI, total loan amount, and total interest.
 - 📊 **Amortization Schedule**: Displays a month-wise breakdown of payments.
 - 📥 **Download as PDF**: Users can download the amortization schedule in PDF format.
-- 📰 **Latest Loan News**: Fetches real-time financial news.
-- 🔥 **Real-Time Loan Offers**: Fetches loan offers from financial institutions.
-- 📈 **Pie Chart Visualization**: Displays a graphical representation of principal vs. interest.
 
 ## 🛠️ Tech Stack
 - **Frontend**: HTML, CSS, Bootstrap
 - **Backend**: Flask (Python)
 - **Data Handling**: Pandas, JSON
-- **Visualization**: Matplotlib
 - **PDF Generation**: pdfkit
 
 ## 🚀 How to Run the Project
